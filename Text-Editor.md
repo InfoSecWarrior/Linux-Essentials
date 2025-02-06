@@ -67,6 +67,12 @@ To show a `$` at the end of each line (useful for checking empty lines):
 cat -e filename
 ```
 
+#### **Display Content in Reverse Order (`tac` Command):**  
+The `tac` command is the reverse of `cat`. It displays the contents of a file **from bottom to top** (last line first).  
+
+```bash
+tac filename
+```
 
 
 
