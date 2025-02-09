@@ -1,0 +1,97 @@
+
+# 🎨 GRC (Generic Colouriser) Installation 🌈  
+
+This document outlines the steps to install **GRC (Generic Colouriser)** on a **CentOS** system and configure it for colorful command output. 🎭✨  
+
+## 🛠️ Step 1: Install Required Packages 📦  
+
+First, install the necessary packages using the following command:  
+
+```bash
+sudo yum install git make
+```
+✅ Installs **Git** and **Make** for handling the installation process.  
+
+---
+
+## 🔄 Step 2: Clone the GRC Repository 🌐  
+
+Next, clone the **GRC** repository from **GitHub** using:  
+
+```bash
+git clone https://github.com/garabik/grc.git
+```
+📥 This downloads the GRC source code to your system.  
+
+---
+
+## 📂 Step 3: Navigate to the GRC Directory 📁  
+
+Change into the **GRC** directory:  
+
+```bash
+cd grc
+```
+📌 You are now inside the downloaded GRC folder.  
+
+---
+
+## 🚀 Step 4: Run the Installation Script ⚡  
+
+Execute the installation script to install **GRC**:  
+
+```bash
+sudo ./install.sh
+```
+🛠️ This script **installs** GRC and sets it up for use.  
+
+---
+
+## 🎨 Step 5: Configure Aliases 🔧  
+
+To enable **colorful output** for various commands, add aliases to your `.bashrc` file. Open it in a text editor:  
+
+```bash
+nano ~/.bashrc
+```
+📜 Now, add the following **aliases** to enhance terminal colors:  
+
+
+🌈 Colorful output aliases 🎨
+
+```bash
+alias ls='grc ls'  
+alias ll='grc ls -l'  
+alias la='grc ls -a'  
+alias l='grc ls -CF'  
+alias grep='grc grep'  
+alias egrep='grc egrep'  
+alias fgrep='grc fgrep'  
+alias ping='grc ping'  
+alias diff='grc diff'  
+alias tail='grc tail'  
+alias head='grc head'  
+alias ps='grc ps'  
+alias netstat='grc netstat'  
+alias ip='grc ip'  
+alias ifconfig='grc ifconfig'  
+alias df='grc df'  
+alias du='grc du'  
+alias free='grc free'  
+alias top='grc top'  
+
+```
+🎨 This makes your terminal **more visually appealing** with colorized output! 🌟  
+
+---
+
+## 🔄 Step 6: Apply Changes 🚀  
+
+To apply the changes made to your `.bashrc`, run:  
+
+```bash
+source ~/.bashrc
+```
+✅ Now, your terminal commands will **display colored output automatically!** 🌈  
+
+---
