@@ -24,6 +24,7 @@ The Linux directory structure is organized hierarchically and adheres to the **F
 | `/usr` | User programs, data, and shared files. This directory contains most user utilities and applications. |
 | `/var` | Variable data files that change during system operation (e.g., logs in `/var/log`, spools, cache). |
 | `/run` | Runtime data for processes since the last boot. Replaces `/var/run` and is available early during boot. |
+| `/pwd`  | Display the full path of the current directory |
 
 ---
 
@@ -216,5 +217,33 @@ Below is a detailed explanation of each directory.
 - **Relevance for Pentesters**:
   - May contain sensitive information in temporary files.
   - Misconfigured permissions could allow unauthorized access to system processes.
-    
+
+Certainly! Here's an explanation of the `pwd` command in a similar format:
+
+---
+
+## 17. `pwd` (Print Working Directory)
+
+- **What It Is**: The `pwd` command is used to display the full path of the current directory you're in within the filesystem. It stands for "Print Working Directory."
+
+- **Purpose**: Helps users identify their current location in the filesystem, especially when navigating through different directories in the terminal.
+
+- **How It Works**: When you run `pwd`, it outputs the absolute path of the directory you're currently working in, starting from the root directory `/`.
+
+- **Examples**:
+  - After running `pwd` in the `/home/user/Documents` directory, you might see:
+    ```
+    /home/user/Documents
+    ```
+  - Running `pwd` in `/etc/nginx` might return:
+    ```
+    /etc/nginx
+    ```
+
+- **Relevance for Users**:
+  - Helps you understand where you are in the file system and aids navigation.
+  - Useful when performing tasks like finding or creating files in the current directory.
+  - Can assist in scripting by providing the current directory's full path.
+
+
 ---
