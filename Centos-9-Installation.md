@@ -5,11 +5,11 @@
 
 1. Open VirtualBox and click **New**.
 2. Set the name to **CentOS 9**, type to **Linux**, and version to **Red Hat (64-bit)**.
-3. Allocate **1024 MB** RAM.
+3. Allocate **1024 MB** RAM (According to requirement).
 4. Create a virtual disk:
    - Select **VDI (Virtual Disk Image)**.
    - Choose **Dynamically allocated**.
-   - Set **file location and size to 40 GB**.
+   - Set **file location and size to 40 GB** (According to requirement).
 5. Start the virtual machine, select the CentOS 9 ISO, and click **Start**.
 
 ## Installation
@@ -37,8 +37,8 @@
 7. **Security Policy**: No changes.
 8. Click **Begin Installation**.
 9. Set **root password** and create a user:
-   - Full name: `Demo`.
-   - Username: `Demo`.
+   - Full name: `<demouser>`.
+   - Username: `<demouser>`.
    - Tick **Make this user administrator**.
 10. Click **Done > Done**, then **Reboot**.
 11. Accept **License Agreement**.
@@ -50,10 +50,17 @@
 2. Run the following commands:
    ```bash
    yum install gcc
+   ```
+   
+   ```bash
    yum install kernel-devel
+   ```
+
+   ```bash
    reboot
    ```
-3. Insert Guest Additions CD:
+   
+4. Insert Guest Additions CD:
    - Go to **Device > Insert Guest Additions CD Image > Run**.
    - Reboot the system.
 
