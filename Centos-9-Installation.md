@@ -62,18 +62,43 @@
 ```bash
 rpm -q kernel-devel
 ```
+
 ```bash
 uname -r
 ```
-```
+
+```bash
 yum update kernel-*
+
+```bash
 yum install epel-release.noarch
+```
+
+```bash
 yum install gcc make perl kernel-devel kernel-headers bzip2 dkms
+```
+
+```bash
 yum install make perl
+```
+
+```bash
 yum install kernel-devel-$(uname -r)
+```
+
+```bash
 yum install epel-release
+```
+
+```bash
 reboot
+```
+
+```bash
 device > Insert Guest Additions CD image > Run
+```
+
+```bash
 reboot
 ```
 
