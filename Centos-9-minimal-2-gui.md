@@ -1,7 +1,7 @@
 ## CentOS 9 Installation (Minimal)
 
 [Download CentOS 9 Minimal ISO](https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-20250210.0-x86_64-boot.iso)
-a
+
 ### VirtualBox Setup
 
 1. Open VirtualBox and click **New**.
