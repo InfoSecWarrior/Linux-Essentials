@@ -33,12 +33,12 @@
 6. **Network & Hostname**:
    - Enable **enp0s3**.
    - Configure IPv4 manually, disable IPv6, save settings.
-   - Set hostname to **simran**.
+   - Set hostname to **Demo**.
 7. **Security Policy**: No changes.
 8. Click **Begin Installation**.
 9. Set **root password** and create a user:
-   - Full name: `simran`.
-   - Username: `simran`.
+   - Full name: `Demo`.
+   - Username: `Demo`.
    - Tick **Make this user administrator**.
 10. Click **Done > Done**, then **Reboot**.
 11. Accept **License Agreement**.
