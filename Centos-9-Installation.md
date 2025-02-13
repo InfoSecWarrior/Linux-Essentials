@@ -76,6 +76,7 @@ uname -r
 
 ```bash
 yum update kernel-*
+```
 
 ```bash
 yum install epel-release.noarch
