@@ -9,12 +9,12 @@ This repository includes hands-on exercises, command demonstrations, server conf
 This course covers a wide range of topics, from Linux basics to advanced server management.
 
 ### **Module 01: Introduction to Linux**
-- UNIX, Linux, and Open Source
+- [UNIX, Linux, and Open Source](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Introduction-to-Linux.md#operating-system-os-overview)
 - What is Linux?
-- Directory structure of Linux
+- [Directory structure of Linux](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Directory-Structure-of-Linux.md#linux-directory-structure)
 - Linux Installation
-- Login Methods in Linux
-- Run Levels
+- [Distributions of Linux Family](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Linux-Distributions.md#1-debian-family)
+- [Run Levels](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Run-level.md#explanation-of-runlevels)
 
 ### **Module 02: Linux Basic Commands**
 - Navigating the File System (ls, pwd, cd)
