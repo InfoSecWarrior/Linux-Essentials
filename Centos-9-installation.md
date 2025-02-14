@@ -1,140 +1,84 @@
-## CentOS 9 Installation (GUI)
-[Download CentOS 9 Stream ISO](https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-20250210.0-x86_64-dvd1.iso)
+#   ***CentOS Installation in VirtualBox***
+## 📹 **Installation Video**
+To watch the full installation video, click on the link below:  
+### *[CentOS Installation in VirtualBox](https://www.youtube.com/watch?v=ZqyVrfW2c6g)*
 
-### VirtualBox Setup
 
-1. Open VirtualBox and click **New**.
-2. Set the name to **CentOS 9**, type to **Linux**, and version to **Red Hat (64-bit)**.
-3. Allocate **1024 MB** RAM (According to requirement).
-4. Create a virtual disk:
-   - Select **VDI (Virtual Disk Image)**.
-   - Choose **Dynamically allocated**.
-   - Set **file location and size to 40 GB** (According to requirement).
-5. Start the virtual machine, select the CentOS 9 ISO, and click **Start**.
+---
 
-## Installation
 
-1. Choose **Install CentOS 9**.
-2. Select **English > English (India) > Continue**.
-3. Configure settings:
-   - **Date & Time**: Asia/Kolkata > Done.
-   - **Keyboard Layout**: English (India, with rupee) > Add English (US) > Done.
-   - **Language Support**: English (India) > Done.
-   - **Installation Source**: Verify ISO > Done.
-   - **Software Selection**: Select **Server with GUI**.
-4. Configure partitioning:
-   - **Custom partitioning** > Done.
-   - Create partitions:
-     - `/boot` - **1024 MiB**, **ext4**, Standard.
-     - `swap` - **4096 MiB**, Standard.
-     - `/` - **XFS file system**, Standard.
-   - Click **Done > Accept Changes**.
-5. **KDUMP**: No changes.
-6. **Network & Hostname**:
-   - Enable **enp0s3**.
-   - Configure IPv4 manually, disable IPv6, save settings.
-   - Set hostname to **Demo**.
-7. **Security Policy**: No changes.
-8. Click **Begin Installation**.
-9. Set **root password** and create a user:
-   - Full name: `<demouser>`.
-   - Username: `<demouser>`.
-   - Tick **Make this user administrator**.
-10. Click **Done > Done**, then **Reboot**.
-11. Accept **License Agreement**.
-12. **Finish Configuration**.
+Follow the steps below to successfully install CentOS in VirtualBox. This guide will walk you through each step with clear instructions.
 
-## Install Drivers
+---
 
-1. Go to **Device > Network > Network Settings > Bridged Adapter**.
-2. Run the following commands:
-   ```bash
-   yum install gcc
-   ```
-   
-   ```bash
-   yum install kernel-devel
-   ```
+### *Step 1: Download CentOS ISO*
+1. Visit the [CentOS website](https://www.centos.org/download/).
+2. Download the *ISO image* that corresponds to your system architecture (e.g., x86_64).
+   - Choose the *Minimal ISO* for a lighter installation or the *DVD ISO* for a complete installation.
 
-   ```bash
-   reboot
-   ```
-   
-4. Insert Guest Additions CD:
-   - Go to **Device > Insert Guest Additions CD Image > Run**.
-   - Reboot the system.
+---
 
-### If Installation Fails, Use These Commands:
+### *Step 2: Create a New Virtual Machine in VirtualBox*
+1. *Open VirtualBox* and click on *New* to start creating a new VM.
+2. Set the *Name* of your VM (e.g., "CentOS VM").
+3. Choose *Linux* for the *Type* and *Red Hat (64-bit)* for the *Version*.
+4. Set *Memory (RAM)* allocation: 2GB or more is recommended for optimal performance.
+   - Example: 2048MB (2GB) or 4096MB (4GB) depending on your system’s capacity.
 
-```bash
-rpm -q kernel-devel
-```
+---
 
-```bash
-uname -r
-```
+### *Step 3: Configure the Virtual Machine’s Storage*
+1. *Go to the Storage tab* in VM settings.
+2. Under *Controller: IDE, click **Empty*.
+3. *Attach the CentOS ISO*:
+   - Click the *disk icon* next to *Optical Drive* and select *Choose a disk file*.
+   - Browse and select the *CentOS ISO* you downloaded in Step 1.
 
-```bash
-yum update kernel-*
-```
+---
 
-```bash
-yum install epel-release.noarch
-```
+### *Step 4: Start the Virtual Machine*
+1. *Click Start* to boot the VM from the attached CentOS ISO.
+2. The CentOS installation screen should now appear. Select *Install CentOS* and press *Enter* to begin the installation process.
 
-```bash
-yum install gcc make perl kernel-devel kernel-headers bzip2 dkms
-```
+---
 
-```bash
-yum install make perl
-```
+### *Step 5: Install CentOS*
+1. *Language and Keyboard Layout*:
+   - Select your desired *Language* and *Keyboard Layout*.
+2. *Installation Destination*:
+   - Select the hard disk where CentOS will be installed (usually the default one).
+   - You can choose *Automatic Partitioning* for simplicity.
+3. *Network Configuration*:
+   - Set up your *Network* and ensure it’s *enabled* for internet access.
+4. *User Configuration*:
+   - Set a *root password* and create a *user account* with administrative privileges.
+5. Once the installation completes, click *Reboot*.
 
-```bash
-yum install kernel-devel-$(uname -r)
-```
+---
 
-```bash
-yum install epel-release
-```
+### *Step 6: Post-Installation Setup*
+1. *Initial Boot*:
+   - After rebooting, log in using the credentials you created during the installation.
+2. *Update CentOS*:
+   - Open the *Terminal* and run the following command to update CentOS:
+     
+     sudo yum update -y
+     
+3. *Install Additional Software*:
+   - Install any necessary software packages using yum or dnf (for newer CentOS versions).
 
-```bash
-reboot
-```
+---
 
-```bash
-device > Insert Guest Additions CD image > Run
-```
+### *Additional Tips*
+- *Enable Network Adapter*:
+   - If you don’t have internet access, ensure your *network settings* are configured correctly. Use *NAT* or *Bridged Adapter* to enable internet.
+- *Install VirtualBox Guest Additions*:
+   - For better integration (shared folders, enhanced graphics), install *VirtualBox Guest Additions* after logging into CentOS.
+   - You can find the option to install it in *Devices > Insert Guest Additions CD image*.
 
-```bash
-reboot
-```
+---
 
-## Verify MD5 Checksum for ISO
+## ⚡ *Congratulations!* 
+You have successfully installed CentOS on VirtualBox! Enjoy exploring your new virtual machine and getting familiar with CentOS.
 
-1. Download the **MD5 checksum** file for CentOS 9.
-2. Open the command prompt and run:
-   ```bash
-   md5sum filename.iso
-   ```
-3. Compare the generated checksum with the official checksum.
-
-## SSH Not Working on Windows 7
-
-1. **Install PuTTY**:
-   - Download from [PuTTY Official Site](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html).
-   - Install it on your system.
-
-2. **Launch PuTTY**:
-   - Open **Start Menu**, search for **PuTTY**, and launch it.
-
-3. **Connect to CentOS Server**:
-   - In **PuTTY Configuration**:
-     - Enter the **IP address** of your CentOS server.
-     - Ensure **Port 22** is selected.
-     - Click **Open**, then accept the security prompt.
-
-4. **Login to the Server**:
-   - Username: `root`
-   - Password: `*****`
-   - Assign a session name (e.g., `CentOS 9`).
+---
