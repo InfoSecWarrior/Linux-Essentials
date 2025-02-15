@@ -1,7 +1,7 @@
 # Linux Essentials
 
 ## Overview
-Welcome to the **Linux Essentials** repository! This repository is designed to provide comprehensive learning materials for mastering Linux, focusing on **Red Hat Linux Server** administration and its real-world applications in enterprise environments.
+Welcome to the **Linux Essentials** repository! This repository is designed to provide  comprehensive learning materials for mastering Linux, focusing on **Red Hat Linux Server** administration and its real-world applications in enterprise environments.
 
 This repository includes hands-on exercises, command demonstrations, server configurations, and security best practices to help learners acquire essential Linux skills.
 
