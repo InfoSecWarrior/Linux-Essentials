@@ -10,30 +10,30 @@ This course covers a wide range of topics, from Linux basics to advanced server 
 
 ### **Module 01: Introduction to Linux**
 - [UNIX, Linux, and Open Source](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Introduction-to-Linux.md#operating-system-os-overview)
-- What is Linux?
+- [What is Linux?](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Introduction-to-Linux.md#2-linux)
 - [Directory structure of Linux](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Directory-Structure-of-Linux.md#linux-directory-structure)
-- Linux Installation
+- [Linux Installation](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Centos-9-installation.md#centos-9-installation-gui)
 - [Distributions of Linux Family](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Linux-Distributions.md#1-debian-family)
 - [Run Levels](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Run-level.md#explanation-of-runlevels)
 
 ### **Module 02: Linux Basic Commands**
-- Navigating the File System (ls, pwd, cd)
-- Creating and Removing Files and Directories (mkdir, touch, rmdir, rm)
-- Copying, Moving, and Renaming Files and Directories
-- Viewing File Contents (cat, less)
-- Pipes and Redirects
-- Archiving and Compression Tools
-- Symbolic Links and Shortcuts
+- [Navigating the File System (ls, pwd, cd)](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Basic-Commands.md#file-and-directory-management)
+- [Creating and Removing Files and Directories (mkdir, touch, rmdir, rm)](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Basic-Commands.md#file-operations)
+- [Copying, Moving, and Renaming Files and Directories](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/cp-and-mv-command.md)
+- [Viewing File Contents (cat, less)](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Text-Editor.md#1-cat-command)
+- [Pipes and Redirects](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Redirection-in-Linux.md#redirection-operators)
+- [Archiving and Compression Tools](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Compress-Tool.md#compression-tools-guide)
+- [Symbolic Links and Shortcuts](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Wildcards.md)
 
 ### **Module 03: Text Editors**
-- Cat
-- Nano
-- Vi / Vim
+- [Cat](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Text-Editor.md#text-editors-in-linux)
+- [nano](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Text-Editor.md#2-nano-command)
+- [Vi / Vim](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Text-Editor.md#vim-text-editor)
 
 ### **Module 04: String Processing and Finding Files**
-- String Processing: head, tail, wc, sort, cut, paste
-- Searching: grep, awk, sed
-- Finding Files: find, locate
+- [String Processing: head, tail, wc, sort, cut, paste](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/String-Processing.md#string-processing-in-linux)
+- [Searching: grep, awk, sed](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Grep.md#grep-command-in-linux)
+- [Finding Files: find, locate](https://github.com/InfoSecWarrior/Linux-Essentials/blob/main/Finding-Files.md)
 
 ### **Module 05: Users, Groups, and Permissions**
 - User and Group Management
