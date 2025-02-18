@@ -198,6 +198,7 @@ tracepath 8.8.8.8
 ## 📝 Editing Network Configuration Files
 ```bash
 cd /etc/sysconfig/network-scripts
+
 vim /etc/sysconfig/network-scripts/ifcfg-enp0s3
 ```
 
