@@ -110,3 +110,66 @@ Thus, the numeric permission value is **`754`**.
 - **x (execute)**: Grants the ability to execute the file or access the directory.
 
 This system of file permissions allows you to manage who can interact with your files and directories and in what way.
+
+
+-Viewing Permissions:
+
+   Use the ls -l command to display detailed information about files, including permissions, ownership, and group association.
+
+The output format typically shows permissions, number of links, owner, group, file size, and modification date.
+The output format typically shows permissions, number of links, owner, group, file size, and modification date.
+
+
+                                                                                     
+position 1-1                                                                                     
+
+                                 “-"        Normal file
+                                 “d”        Directory
+                                 “l”        Link
+                                 “p”        Process Filey
+                                 “b”        Block Device
+                                 “c”        Character Device
+
+
+owner filed 2-4
+
+                                  “-”       No Read permission for Owner
+                                  “r”       Read permission for owner
+                                  “-”       No Write permission for Owner
+                                  “w”       Write permission for Owner
+                                  "-"       No execute permission for Owner
+                                  “x”       Execute permission for Owner
+
+                                  
+group associated fitd 5-7                                                                                                                                        
+                                                                                                                                                                
+                                  “-”       No Read permission for group associated
+                                  “r”       Read permission for group associate
+                                  “-”'      No Write permission for group associated 
+                                  “w”       Write permission for group associated
+                                  “-”       No execute permission for group associated
+                                  “x”       execute permission for group associated
+                                                                                     
+                                                                                     
+
+ Block Devices:  Block devices provide buffered access to hardware. Data is read and written in fixed-size blocks, typically 512 bytes or more.
+
+           Examples: Hard drives, SSDs, USB drives, and other storage devices.
+
+           Usage: Block devices are used when data needs to be accessed randomly and efficiently, like reading or writing files on a disk.
+
+           Location: Block device files are typically found in /dev, such as /dev/sda (a hard drive) or /dev/sdbl (a partition on a second drive).
+
+
+# ls -l /dev | grep 'b'
+
+
+Character devices:  Character devices provide unbuffered, stream-oriented access to hardware. Data is read and written as a stream of bytes, often one character at a time.
+
+             Examples: Keyboards, mice, serial ports, and printers.
+
+             Usage: Character devices are used for devices that handle data sequentially and don't require block-level access.
+
+             Location: Character device files are also found in /dev, such as /dev/tty (a terminal) or /dev/null (a special device that discards all data written t
+
+#ls-1/dev grep 'c'       
