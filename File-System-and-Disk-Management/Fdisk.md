@@ -292,3 +292,89 @@ No errors detected.
   ```
   x
   ```
+
+# GDISK COMMANDS
+
+Gdisk is used for managing GPT (GUID Partition Table) disks. Use gdisk when dealing with modern systems that use UEFI or when working with disks larger than 2TB. In contrast, use fdisk for older systems with MBR partition schemes. Use fdisk for managing MBR disks (older systems, BIOS) and gdisk for GPT disks (modern UEFI systems, disks >2TB). The commands below provide a concise reference to view, create, delete, and modify GPT partitions using gdisk. Use these commands carefully to manage your disk partitions effectively.
+
+---
+
+## Basic Syntax
+
+```
+gdisk [options] <device>
+```
+- **<device>**: Disk device (e.g., `/dev/sda`, `/dev/nvme0n1`).
+
+---
+
+## Key Commands
+
+- **List Partition Table:**  
+  ```
+  gdisk -l /dev/sda
+  ```  
+  Displays detailed partition information for the specified disk.
+
+- **Open Disk in Interactive Mode:**  
+  ```
+  gdisk /dev/sda
+  ```  
+  Opens the disk for partition management (choose the correct disk!).
+
+- **Display Help:**  
+  In interactive mode, type:
+  ```
+  ?
+  ```
+
+- **Print Partition Table:**  
+  Inside interactive mode, type:
+  ```
+  p
+  ```
+
+- **Create New Partition:**  
+  In interactive mode, type:
+  ```
+  n
+  ```  
+  Follow prompts to specify partition number (GPT: 1–128), starting sector (default accepted by pressing Enter), and size (e.g., `+10G`).
+
+- **Delete a Partition:**  
+  In interactive mode, type:
+  ```
+  d
+  ```  
+  Then enter the partition number to delete.
+
+- **Change Partition Type:**  
+  In interactive mode, type:
+  ```
+  t
+  ```  
+  Then choose the partition number and enter the new type code. Use `l` (lowercase L) to list valid type codes.
+
+- **Display Detailed Partition Info:**  
+  In interactive mode, type:
+  ```
+  i
+  ```
+
+- **Verify Partition Table:**  
+  In interactive mode, type:
+  ```
+  v
+  ```
+
+- **Write Changes to Disk:**  
+  To commit changes, type:
+  ```
+  w
+  ```
+
+- **Quit Without Saving:**  
+  To exit without saving changes, type:
+  ```
+  q
+  ```
