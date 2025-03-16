@@ -1,281 +1,294 @@
-# fdisk: A Deep, Unembellished Explanation of How to Manage Partitions on Linux
+# FDISK COMMANDS
 
-
-
-
-### What is fdisk?
-
-`fdisk` is a utility for managing disk partitions on a Linux system. It allows users to create, delete, modify, and inspect disk partitions. The tool works with MBR (Master Boot Record) partition tables, but newer systems might use GPT (GUID Partition Table), which is handled by other utilities like `gdisk`.
-
-### Basic Concepts
-
-- **Disk**: A storage device like `/dev/sda`, `/dev/sdb`, etc.
-- **Partition**: A subdivision of a disk. It can contain a file system or swap space. For example, `/dev/sda1` is the first partition on the first disk (`/dev/sda`).
-- **MBR vs GPT**: MBR is an older partitioning scheme, while GPT is the newer and more flexible scheme.
-
-### fdisk Command Syntax
-
-To run `fdisk`, you need to specify the disk you want to manage. You typically do this by specifying the device path, like `/dev/sda` for the first disk.
-
-```bash
-sudo fdisk /dev/sda
-```
-
-### Main fdisk Commands
-
-After running `fdisk`, you enter a command prompt. From here, you can use a series of commands to manipulate the partition table.
-
-#### 1. **List Partitions (-l)**
-
-To list all the partitions on the system, you can run:
-
-```bash
-sudo fdisk -l
-```
-
-This will display detailed information about each disk and its partitions, such as device names (e.g., `/dev/sda1`), partition sizes, types, and system flags.
-
-
-
-#### 2. **Start fdisk on a Disk**
-
-When you want to modify a specific disk, use:
-
-```bash
-sudo fdisk /dev/sda
-```
-
-This will open the partition table for `/dev/sda`. Once you enter the `fdisk` command for a disk, you’ll be in the interactive `fdisk` prompt.
-
-#### 3. **Display Current Partition Table (p)**
-
-Once inside the `fdisk` interactive mode, use the `p` command to print the partition table of the selected disk.
-
-```bash
-Command (m for help): p
-```
-
-This shows the existing partitions and their details (e.g., partition number, size, type).
-
-#### 4. **Create a New Partition (n)**
-
-To create a new partition, use the `n` command:
-
-```bash
-Command (m for help): n
-```
-
-You will be prompted to provide the following details:
-- **Partition type**: primary or extended. Most of the time, you'll choose primary.
-- **Partition number**: The number for the new partition. If you're creating the first partition, it'll be 1, the second will be 2, and so on.
-- **First sector**: The starting point for the partition. You can press Enter to accept the default.
-- **Last sector**: The endpoint for the partition. Again, pressing Enter will set it to the default, which will take up all the remaining space.
-
-After completing the prompts, the partition is created, but the changes aren’t written to disk until you save them.
-
-#### 5. **Delete a Partition (d)**
-
-If you need to delete an existing partition, use the `d` command:
-
-```bash
-Command (m for help): d
-```
-
-You’ll be asked for the partition number. Once you provide it, the partition will be marked for deletion, but the actual changes won't happen until you write the changes to the disk.
-
-#### 6. **Change Partition Type (t)**
-
-If you need to change the partition type (e.g., from Linux filesystem to swap), you can use the `t` command:
-
-```bash
-Command (m for help): t
-```
-
-You’ll be prompted for the partition number and the type. For example, `82` is for Linux swap, and `83` is for Linux filesystem.
-
-#### 7. **Write Changes to Disk (w)**
-
-Once you're done making changes, you must write those changes to the disk. Use the `w` command:
-
-```bash
-Command (m for help): w
-```
-
-This will write the partition table to the disk and exit `fdisk`.
-
-#### 8. **Quit Without Saving (q)**
-
-If you decide to exit `fdisk` without making any changes, use the `q` command:
-
-```bash
-Command (m for help): q
-```
-
-This will quit `fdisk` without saving any modifications.
-
-#### 9. **Print Partition Table Again (p)**
-
-If at any time you want to see the partition table after making changes, you can use the `p` command again.
-
-#### 10. **Help (m)**
-
-To view all available commands in `fdisk`, type `m`:
-
-```bash
-Command (m for help): m
-```
-
-This will list all the available commands and their descriptions.
-
-### Partition Types and Codes
-
-Each partition has a type code associated with it. Some of the common ones are:
-- `83` – Linux
-- `82` – Linux swap
-- `7` – NTFS (used by Windows)
-- `a5` – FreeBSD
-- `8e` – Linux LVM (Logical Volume Manager)
-
-You can change the partition type using the `t` command and entering the type code.
-
-### Example of a Simple Workflow
-
-1. Start `fdisk` on the desired disk:
-
-   ```bash
-   sudo fdisk /dev/sda
-   ```
-
-2. Print the partition table:
-
-   ```bash
-   Command (m for help): p
-   ```
-
-3. Create a new partition:
-
-   ```bash
-   Command (m for help): n
-   ```
-
-4. Choose the default options for the partition (first sector, last sector, etc.).
-
-5. Write the changes:
-
-   ```bash
-   Command (m for help): w
-   ```
-
-6. Exit `fdisk`:
-
-   ```bash
-   Command (m for help): q
-   ```
+Fdisk is a Linux command-line tool for managing disk partitions, supporting both MBR and GPT partition schemes. It enables users to create, delete, modify, and view partitions interactively.
 
 ---
 
-### Additional Considerations
+## Basic Syntax
 
-- **Backup**: Always make sure you have a backup before modifying partitions, as data loss is possible if mistakes are made.
-- **Partitioning Scheme**: If you're working with GPT (instead of MBR), `fdisk` will not be sufficient. Use `gdisk` or `parted` for GPT disks.
-- **Formatting**: After creating or modifying a partition, you will typically need to format it with a filesystem (like `ext4`, `xfs`, etc.) using a tool like `mkfs`
+```
+fdisk [options] <device>
+```
+- `<device>`: Specifies the disk device (e.g., `/dev/sda`, `/dev/nvme0n1`).
 
+---
 
-<p/>
+## Basic Concepts
 
+- **Disk:**  
+  A storage device like `/dev/sda`, `/dev/sdb`, etc.
 
+- **Partition:**  
+  A subdivision of a disk. It can contain a filesystem or swap space. For example, `/dev/sdb1` is the first partition on disk `/dev/sdb`.
 
-# Managing disks in Linux involves tasks such as viewing disk information, partitioning, creating filesystems, and monitoring disk usage. Here's a concise guide to these essential operations
+---
 
-**1. Viewing Disk Information:**
+## Partition Types Supported
 
-To list all available block devices and their partitions:
+- **MBR (DOS partition table):**  
+  Default for older systems and disks ≤ 2TB.
+  
+- **GPT (GUID Partition Table):**  
+  Required for UEFI boot and disks > 2TB.
+  
+- **Sun Partition Table:**  
+  Used in legacy Sun systems.
+  
+- **SGI (IRIX) Partition Table:**  
+  Used in SGI IRIX systems (rare).
 
-```bash
+---
+
+## List All Available Storage Devices and Partitions
+
+- **List in a tree structure:**
+```
 lsblk
 ```
 
-This command displays a tree-like structure of your storage devices, including their mount points.
-
-**2. Viewing Disk Usage:**
-
-To check disk space usage:
-
-```bash
-df -h
+*Example Output:*
+```
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   500G  0 disk
+├─sdb1   8:1    0   100G  0 part /
+├─sdb2   8:2    0    50G  0 part /home
+├─sdb3   8:3    0   350G  0 part /data
 ```
 
-The `-h` flag presents the output in a human-readable format (e.g., GB, MB).
-
-**3. Viewing Disk Partitions:**
-
-To list all partitions:
-
-```bash
+- **View Detailed Information:**
+```
 fdisk -l
 ```
 
-This command provides detailed information about each partition on your system.
-
-**4. Creating a New Partition:**
-
-To create a new partition on a disk (e.g., `/dev/sda`):
-
-```bash
-sudo fdisk /dev/sda
+*Example Output:*
+```
+Disk /dev/sda: 500 GiB, 536870912000 bytes, 1048576000 sectors
+Device     Boot Start       End   Sectors  Size Id Type
+/dev/sdb1  *     2048   2099199   2097152  100M 83 Linux
+/dev/sdb2       2099200  4196351   2097152  100M 82 Linux swap
+/dev/sdb3       4196352 1048575999 1044389648 500G 83 Linux
 ```
 
-Within the `fdisk` prompt:
+---
 
-- Type `n` to create a new partition.
-- Choose `p` for primary or `e` for extended.
-- Specify the partition number, first sector, and last sector or size.
-- Type `w` to write changes and exit.
+## Opening a Specific Disk in Fdisk
 
-**5. Creating a Filesystem:**
+*Caution: Choose the correct disk (e.g., `/dev/sdX`) to avoid data loss.*
 
-After creating a partition (e.g., `/dev/sda1`), format it with a filesystem:
-
-```bash
-sudo mkfs.ext4 /dev/sda1
+```
+fdisk /dev/sdX
 ```
 
-Replace `ext4` with your desired filesystem type (e.g., `ext3`, `xfs`).
+This command opens the disk in interactive mode.
 
-**6. Mounting a Partition:**
+---
 
-To mount a partition to a directory:
+## Interactive Mode Commands
 
-```bash
-sudo mount /dev/sda1 /mnt
+- **Display Help Menu:**
+```
+m
 ```
 
-Replace `/mnt` with your target directory.
-
-**7. Checking Filesystem Consistency:**
-
-To check and repair a filesystem:
-
-```bash
-sudo fsck /dev/sda1
+- **Initialize Disk with GPT Partition Table:**
+```
+g
 ```
 
-This command scans and fixes filesystem errors on the specified partition.
-
-**8. Monitoring Disk I/O:**
-
-To monitor disk input/output operations:
-
-```bash
-iostat -x 1
+- **Initialize Disk with MBR (DOS) Partition Scheme:**
+```
+o
 ```
 
-The `-x` flag provides extended statistics, and `1` sets the interval in seconds.
-
-**9. Viewing Disk Health:**
-
-To check the health of a disk:
-
-```bash
-sudo smartctl -a /dev/sda
+- **Print the Current Partition Table:**
 ```
+p
+```
+
+*Example Output:*
+```
+Device     Boot    Start      End  Sectors Size Id Type
+/dev/sdd1           2048 10487807 10485760   5G 83 Linux
+/dev/sdd2       10487808 20973567 10485760   5G 83 Linux
+/dev/sdd3       20973568 41943039 20969472  10G 83 Linux
+```
+
+- **Create a New Partition:**
+```
+n
+```
+
+  *Interactive Steps:*  
+  1. **Choose Partition Type (MBR only):**  
+     - For Primary partition:  
+       ```
+       p
+       ```
+     - For Extended partition:  
+       ```
+       e
+       ```
+     - For Logical partition (only if an extended partition exists):  
+       ```
+       l
+       ```
+
+  2. **Choose Partition Number:**  
+     - **MBR:** 1–4  
+     - **GPT:** 1 to 128 (or higher, depending on disk size)
+
+  3. **Select Starting Sector:**  
+     When prompted, press Enter to accept the default.
+     *Example prompt:*  
+     ```
+     First sector (2048-41943039, default 2048):
+     ```
+
+  4. **Select Partition Size:**  
+     Specify size with suffixes K, M, G, T, or P.
+     - For 10 KB:  
+       ```
+       +10K
+       ```
+     - For 10 MB:  
+       ```
+       +10M
+       ```
+     - For 10 GB:  
+       ```
+       +10G
+       ```
+     - For 10 TB:  
+       ```
+       +10T
+       ```
+     - For 10 PB:  
+       ```
+       +10P
+       ```
+     When prompted for the last sector, press Enter or specify size accordingly.
+
+- **Toggle Bootable Flag:**  
+  Toggles the bootable flag on a partition.
+  ```
+  a
+  ```
+
+- **Change Partition Type:**
+```
+t
+```
+
+  *After invoking, follow these steps:*
+  1. **Select the Partition Number.**
+  2. **Enter the New Partition Type Code.**
+
+  **MBR Partition Type Codes:**
+
+  | Partition Type     | Code |
+  |--------------------|------|
+  | Linux              | 83   |
+  | Swap               | 82   |
+  | Extended           | 05   |
+  | UEFI               | EF   |
+  | RAID               | FD   |
+  | LVM                | 8E   |
+  | Linux extended     | 85   |
+
+  **GPT Partition Type Codes:**
+
+  | Partition Type     | Code |
+  |--------------------|------|
+  | Linux              | 20   |
+  | Swap               | 19   |
+  | Home               | 28   |
+  | UEFI               | 1    |
+  | RAID               | 29   |
+  | LVM                | 30   |
+
+- **Delete a Partition:**  
+  Erases all data in the partition.
+  ```
+  d
+  ```
+
+- **Display Detailed Partition Information:**  
+  Shows detailed info about a selected partition.
+  ```
+  i
+  ```
+
+*Example Output:*
+```
+Selected partition 1
+         Device: /dev/sdb1
+          Start: 2048
+            End: 2099199
+        Sectors: 2097152
+      Cylinders: 131
+           Size: 1G
+             Id: 83
+           Type: Linux
+    Start-C/H/S: 0/32/33
+      End-C/H/S: 130/170/40
+```
+
+- **Write Changes to Disk:**  
+  Saves the current partition table changes.
+  ```
+  w
+  ```
+
+- **Exit Without Saving:**  
+  Exits fdisk without writing any changes to disk.
+  ```
+  q
+  ```
+
+- **List Free Unpartitioned Space:**  
+  Displays unpartitioned (free) space on the disk.
+  ```
+  F
+  ```
+
+*Example Output:*
+```
+Unpartitioned space /dev/sdb: 0 B, 0 bytes, 0 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+```
+
+- **Verify Partition Table Consistency:**  
+  Checks the partition table for errors.
+  ```
+  v
+  ```
+
+*Example Output:*
+```
+No errors detected.
+```
+
+- **Dump Partition Layout to an sfdisk Script File:**  
+  Outputs the partition table layout in sfdisk script format.
+  ```
+  O
+  ```
+
+- **Load Disk Layout from an sfdisk Script File:**  
+  Loads a previously dumped partition layout.
+  ```
+  I
+  ```
+
+- **Change Display Units:**  
+  Changes the display units (sectors, bytes, cylinders).
+  ```
+  u
+  ```
+
+- **Enter Expert Mode:**  
+  Enters expert mode for advanced disk modifications.
+  ```
+  x
+  ```
