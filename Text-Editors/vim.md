@@ -3,7 +3,6 @@
 The `vim` (Vi IMproved) editor is a powerful, highly configurable text editor used for programming and general text editing. It is an enhanced version of `vi`, offering more features like syntax highlighting, undo levels, and plugins.  
 
 
-
 ## **`vim`**  
 
 ### **Syntax**  
